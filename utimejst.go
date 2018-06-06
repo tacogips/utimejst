@@ -41,7 +41,13 @@ func main() {
 }
 
 func convertAndOutput(input string) {
-	if inputVal, err := strconv.ParseInt(input, 10, 64); err == nil {
+	inputVal, err := strconv.ParseInt(input, 10, 64)
+
+	if len(input) == 13 { // millisecond
+		output := time.Unix(0, inputVal*int64(time.Millisecond))
+		p(input, output)
+		return
+	} else if err == nil {
 		output := time.Unix(inputVal, 0)
 		p(input, output)
 		return
