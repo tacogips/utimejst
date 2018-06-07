@@ -47,6 +47,11 @@ func convertAndOutput(input string) {
 		output := time.Unix(0, inputVal*int64(time.Millisecond))
 		p(input, output)
 		return
+
+	} else if len(input) == 19 { // nanosecond
+		output := time.Unix(0, inputVal)
+		p(input, output)
+		return
 	} else if err == nil {
 		output := time.Unix(inputVal, 0)
 		p(input, output)
